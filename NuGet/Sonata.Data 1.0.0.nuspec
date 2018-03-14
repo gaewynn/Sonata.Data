@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Sonata.Data</id>
+    <version>$version$</version>
+    <title>Sonata.Data</title>
+    <authors>gaewynn</authors>
+    <owners>Sonata</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/Gaewynn/Sonata.Data</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/gaewynn/Sonata.Data/master/NuGet/sonata-data.png</iconUrl>
+    <description>Sonata.Data</description>
+    <summary></summary>
+    <copyright>Copyright @ 2018 Sonata</copyright>
+	<tags>gaewynn sonata data</tags>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="Microsoft.EntityFrameworkCore" version="2.0.2" />
+      <dependency id="Microsoft.EntityFrameworkCore.Relational" version="2.0.2" />
+      <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="2.0.2" />
+      <dependency id="System.Data.SqlClient" version="4.4.3" />
+      <dependency id="Sonata.Security" version="1.0.1" />
+      <dependency id="Sonata.ComponentModel" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src=".\Sonata.Data\bin\$configuration$\netstandard2.0\Sonata.Data.dll" target="Sonata.Data.dll" />
+  </files>
+</package>
