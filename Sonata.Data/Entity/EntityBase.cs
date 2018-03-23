@@ -59,7 +59,7 @@ namespace Sonata.Data.Entity
 		public EntityBase()
 		{
 			CreationDate = DateTime.UtcNow;
-			CreatedBy = SecurityProvider.WindowsUserProvider.GetCurrentUsername();
+			CreatedBy = SecurityProvider.UserProvider.GetCurrentUsername();
 			ModificationDate = CreationDate;
 			ModifiedBy = CreatedBy;
 		}
@@ -74,7 +74,7 @@ namespace Sonata.Data.Entity
 		public void UpdateProperty()
 		{
 			ModificationDate = DateTime.UtcNow;
-			ModifiedBy = SecurityProvider.WindowsUserProvider.GetCurrentUsername();
+			ModifiedBy = SecurityProvider.UserProvider.GetCurrentUsername();
 		}
 
 		#endregion
