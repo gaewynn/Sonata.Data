@@ -20,7 +20,7 @@
       <dependency id="Microsoft.EntityFrameworkCore.Relational" version="2.0.2" />
       <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="2.0.2" />
       <dependency id="System.Data.SqlClient" version="4.4.3" />
-      <dependency id="Sonata.Security" version="1.0.1" />
+      <dependency id="Sonata.Security" version="1.0.2" />
       <dependency id="Sonata.ComponentModel" version="1.0.0" />
     </dependencies>
   </metadata>

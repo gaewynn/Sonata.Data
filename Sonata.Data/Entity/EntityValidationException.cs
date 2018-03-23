@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Sonata.Diagnostics.Logs;
 
 namespace Sonata.Data.Entity
 {
@@ -29,9 +28,9 @@ namespace Sonata.Data.Entity
 		public IEnumerable<ValidationResult> ValidationResults { get; }
 
 		/// <summary>
-		/// Gets the <see cref="ValidationResults"/> converted into an <see cref="IEnumerable{TechnicalLog}"/>.
+		/// Gets the <see cref="ValidationResults"/> converted into an <see cref="IEnumerable{string}"/>.
 		/// </summary>
-		public IEnumerable<Log> Logs { get { return ValidationResults.Select(e => new TechnicalLog(Source, LogLevels.Error, e.ErrorMessage)); } }
+		public IEnumerable<string> Logs { get { return ValidationResults.Select(e => e.ErrorMessage); } }
 
 		#endregion
 

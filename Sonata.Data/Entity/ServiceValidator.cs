@@ -2,13 +2,12 @@
 //	The Sonata.Data.Entity namespace contains classes that provides access to the core functionalities related to EntityBase.
 #endregion
 
+using Sonata.Core.Collections.Generic;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Sonata.Core.Collections.Generic;
-using Sonata.Diagnostics.Logs;
 
 namespace Sonata.Data.Entity
 {
@@ -34,7 +33,7 @@ namespace Sonata.Data.Entity
 
 		#region Methods
 
-		public bool RunValidation<T>(List<Log> logs, Type source, EntityBase<T> entity, CrudOperation? crudOperation = null, string baseMessage = null)
+		public bool RunValidation<T>(List<string> logs, Type source, EntityBase<T> entity, CrudOperation? crudOperation = null, string baseMessage = null)
 			where T : IValidatableObject, new()
 		{
 			if (crudOperation.HasValue)
@@ -49,12 +48,12 @@ namespace Sonata.Data.Entity
 			}
 
 			if (!entity.Validate())
-				logs.AddRange(entity.ValidationResults.Select(e => BuildAndWriteErrorLog(source, $"{(baseMessage ?? String.Empty)} {e.ErrorMessage}")));
+				logs.AddRange(entity.ValidationResults.Select(e => $"{baseMessage ?? String.Empty} {e.ErrorMessage}"));
 
 			return !logs.Any();
 		}
 
-		public bool RunValidation<T>(ConcurrentStack<Log> logs, Type source, EntityBase<T> entity, CrudOperation? crudOperation = null, string baseMessage = null)
+		public bool RunValidation<T>(ConcurrentStack<string> logs, Type source, EntityBase<T> entity, CrudOperation? crudOperation = null, string baseMessage = null)
 			where T : IValidatableObject, new()
 		{
 			if (crudOperation.HasValue)
@@ -69,71 +68,11 @@ namespace Sonata.Data.Entity
 			}
 
 			if (!entity.Validate())
-				logs.PushRange(entity.ValidationResults.Select(e => BuildAndWriteErrorLog(source, $"{(baseMessage ?? String.Empty)} {e.ErrorMessage}")).ToArray());
+				logs.PushRange(entity.ValidationResults.Select(e => $"{baseMessage ?? String.Empty} {e.ErrorMessage}").ToArray());
 
 			return !logs.Any();
 		}
-
-		/// <summary>
-		/// Builds a <see cref="TechnicalLog"/> and writes it to the configured log output.
-		/// </summary>
-		/// <param name="source">The source of the <see cref="TechnicalLog"/>.</param>
-		/// <param name="message">An error message for the <see cref="TechnicalLog"/>.</param>
-		/// <returns>The created <see cref="TechnicalLog"/></returns>
-		protected Log BuildAndWriteErrorLog(Type source, string message)
-		{
-			if (source == null)
-				throw new ArgumentNullException(nameof(source));
-			if (String.IsNullOrWhiteSpace(message))
-				throw new ArgumentNullException(nameof(message));
-
-			var log = new TechnicalLog(source, LogLevels.Error, message);
-			log.Write();
-
-			return log;
-		}
-
-		/// <summary>
-		/// Builds a <see cref="TechnicalLog"/> and writes it to the configured log output.
-		/// </summary>
-		/// <param name="source">The source of the <see cref="TechnicalLog"/>.</param>
-		/// <param name="message">A fatal message for the <see cref="TechnicalLog"/>.</param>
-		/// <param name="exception">The exception that occured.</param>
-		/// <returns>The created <see cref="TechnicalLog"/></returns>
-		protected Log BuildAndWriteFatalLog(Type source, string message, Exception exception)
-		{
-			if (source == null)
-				throw new ArgumentNullException(nameof(source));
-			if (String.IsNullOrWhiteSpace(message))
-				throw new ArgumentNullException(nameof(message));
-			if (exception == null)
-				throw new ArgumentNullException(nameof(exception));
-
-			var log = new TechnicalLog(source, LogLevels.Fatal, message, exception);
-			log.Write();
-
-			return log;
-		}
-
-		/// <summary>
-		/// Builds a <see cref="TechnicalLog"/> and writes it to the configured log output.
-		/// </summary>
-		/// <param name="source">The source of the <see cref="TechnicalLog"/>.</param>
-		/// <param name="message">A warning message for the <see cref="TechnicalLog"/>.</param>
-		/// <returns>The created <see cref="TechnicalLog"/></returns>
-		protected Log BuildAndWriteWarningLog(Type source, string message)
-		{
-			if (source == null)
-				throw new ArgumentNullException(nameof(source));
-			if (String.IsNullOrWhiteSpace(message))
-				throw new ArgumentNullException(nameof(message));
-
-			var log = new TechnicalLog(source, LogLevels.Warning, message);
-			log.Write();
-
-			return log;
-		}
-
+		
 		#endregion
 	}
 }

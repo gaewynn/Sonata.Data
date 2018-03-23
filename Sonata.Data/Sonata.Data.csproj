@@ -13,6 +13,7 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>gaewynn sonata data</PackageTags>
     <NeutralLanguage>English (United States)</NeutralLanguage>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +21,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
     <PackageReference Include="Sonata.ComponentModel" Version="1.0.0" />
-    <PackageReference Include="Sonata.Security" Version="1.0.1" />
+    <PackageReference Include="Sonata.Security" Version="1.0.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.4.3" />
   </ItemGroup>
 

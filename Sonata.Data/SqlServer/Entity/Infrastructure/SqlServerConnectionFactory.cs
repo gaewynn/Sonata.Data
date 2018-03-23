@@ -6,7 +6,6 @@ using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using Sonata.Diagnostics.Logs;
 
 namespace Sonata.Data.SqlServer.Entity.Infrastructure
 {
@@ -66,10 +65,8 @@ namespace Sonata.Data.SqlServer.Entity.Infrastructure
 			}
 			catch (Exception ex)
 			{
-				TechnicalLog.Fatal(GetType(), "Error building database connection", ex);
+				throw new Exception("Error building database connection", ex);
 			}
-
-			return null;
 		}
 
 		/// <summary>
