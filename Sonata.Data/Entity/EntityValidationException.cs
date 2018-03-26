@@ -2,6 +2,7 @@
 //	The Sonata.Data.Entity namespace contains classes that provides access to the core functionalities related to EntityBase.
 #endregion
 
+using Sonata.Diagnostics.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,7 +31,7 @@ namespace Sonata.Data.Entity
 		/// <summary>
 		/// Gets the <see cref="ValidationResults"/> converted into an <see cref="IEnumerable{string}"/>.
 		/// </summary>
-		public IEnumerable<string> Logs { get { return ValidationResults.Select(e => e.ErrorMessage); } }
+		public IEnumerable<Log> Logs { get { return ValidationResults.Select(e => Log.BuildCritical(e.ErrorMessage)); } }
 
 		#endregion
 

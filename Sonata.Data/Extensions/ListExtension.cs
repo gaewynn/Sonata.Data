@@ -2,15 +2,15 @@
 //	TODO
 #endregion
 
+using Microsoft.SqlServer.Server;
+using Sonata.ComponentModel.DataAnnotations;
+using Sonata.Core.Extensions;
+using Sonata.Data.Entity.Mapping;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using Microsoft.SqlServer.Server;
-using Sonata.ComponentModel.DataAnnotations;
-using Sonata.Core.Extensions;
-using Sonata.Data.Entity.Mapping;
 
 namespace Sonata.Data.Extensions
 {

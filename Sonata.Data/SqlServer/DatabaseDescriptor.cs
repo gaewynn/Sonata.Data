@@ -25,9 +25,9 @@ namespace Sonata.Data.SqlServer
 
 		public void Initialize(IModel dbContext)
 		{
-			var dbContexts = Assembly.GetAssembly(typeof(SqlServerContext)).ExportedTypes.Where(e => e.BaseType == typeof(SqlServerContext));
-			var sets = dbContexts.ElementAt(0).GetProperties()
-				.Where(e => e.PropertyType == typeof(SqlServerSet<>)).ToList();
+			//var dbContexts = Assembly.GetEntryAssembly().ExportedTypes.Where(e => e.BaseType == typeof(SqlServerContext));
+			//var sets = dbContexts.ElementAt(0).GetProperties()
+			//	.Where(e => e.PropertyType == typeof(SqlServerSet<>)).ToList();
 
 
 

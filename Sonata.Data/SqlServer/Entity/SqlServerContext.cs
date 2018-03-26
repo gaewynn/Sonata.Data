@@ -1,7 +1,13 @@
 ﻿#region Namespace Sonata.Data.SqlServer.Entity
 //	TODO
-# endregion
+#endregion
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Sonata.Core.Extensions;
+using Sonata.Data.SqlServer.Core;
+using Sonata.Data.SqlServer.Core.Objects;
+using Sonata.Data.SqlServer.Entity.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,12 +17,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Transactions;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Sonata.Core.Extensions;
-using Sonata.Data.SqlServer.Core;
-using Sonata.Data.SqlServer.Core.Objects;
-using Sonata.Data.SqlServer.Entity.Infrastructure;
 
 namespace Sonata.Data.SqlServer.Entity
 {

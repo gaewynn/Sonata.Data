@@ -2,6 +2,11 @@
 //	The Sonata.Data.Entity namespace contains classes that provides access to the core functionalities related to EntityBase.
 #endregion
 
+using Microsoft.EntityFrameworkCore;
+using Sonata.ComponentModel.DataAnnotations;
+using Sonata.Core.Extensions;
+using Sonata.Data.Entity.Mapping;
+using Sonata.Data.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,11 +16,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Sonata.ComponentModel.DataAnnotations;
-using Sonata.Core.Extensions;
-using Sonata.Data.Entity.Mapping;
-using Sonata.Data.Extensions;
 
 namespace Sonata.Data.Entity
 {
