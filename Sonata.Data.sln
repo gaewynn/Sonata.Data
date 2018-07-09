@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonata.Data", "Sonata.Data\Sonata.Data.csproj", "{52E87291-F0EC-42F1-B45E-7D5772D67CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonata.Data", "Sonata.Data\Sonata.Data.csproj", "{52E87291-F0EC-42F1-B45E-7D5772D67CA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{29766BE8-BFCE-4394-8544-8793730B889A}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\Build.bat = NuGet\Build.bat
+		NuGet\sonata-data.png = NuGet\sonata-data.png
+		NuGet\Sonata.Data 2.0.1.nuspec = NuGet\Sonata.Data 2.0.1.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

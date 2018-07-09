@@ -62,11 +62,18 @@ namespace Sonata.Data.SqlServer.Entity
 		/// </summary>
 		/// <remarks>Ne pas utiliser ce constructeur. Il n'est là que pour le Code First.</remarks>
 		public SqlServerContext()
-		{
-			var connectionStringValue = SqlServerDataProvider.ConnectionString;
-			if (String.IsNullOrWhiteSpace(connectionStringValue))
-				throw new ArgumentException($"The argument '{nameof(connectionStringValue)}' cannot be null, empty or contain only white space.");
+			: this(SqlServerDataProvider.ConnectionString)
+		{ }
 
+		public SqlServerContext(string connectionStringValue)
+		{
+			if (connectionStringValue == null)
+			{
+				connectionStringValue = SqlServerDataProvider.ConnectionString;
+				if (String.IsNullOrWhiteSpace(connectionStringValue))
+					throw new InvalidOperationException($"The argument '{nameof(SqlServerDataProvider.ConnectionString)}' cannot be null, empty or contain only white spaces.");
+			}
+			
 			var dbConnectionFactory = new SqlServerConnectionFactory(connectionStringValue);
 			_connection = dbConnectionFactory.Create();
 
